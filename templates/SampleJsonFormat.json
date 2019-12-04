@@ -1,0 +1,20 @@
+{
+ "timestamp" :##RANDOM_TIMESTAMP##
+ "customerid" :##RANDOM_CUSTID##
+ "eventType" :##RANDOM_EVENTTYPE##
+            "productview" :{
+                "product id" :##RANDOM_PRODUCT_ID##
+                "price" :##RANDOM_PRICE##
+},
+            "addtocard" :{
+                "product id" :##RANDOM_PRODUCT_ID##
+                 "price" :##RANDOM_PRICE##
+},
+            "purchase" :[{
+             "product id" :##RANDOM_PRODUCT_ID##
+             "quantity" :##RANDOM_QUATITY##
+             "price" :##RANDOM_PRICE##
+}],
+"source" :##RANDOM_SOURCE##
+"cookieid" :##RANDOM_COOKIES##
+}
