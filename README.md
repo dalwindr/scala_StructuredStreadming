@@ -1,23 +1,18 @@
 # scala_StructuredStreadming
+
 1) Json generator generates json files, 
 2) producers push to kafka, 
 3) spark structured streaming consumer consumes data from kafka
 
-generalPattern.findAllIn(template).map{x=> x
-                                var data = if ( x.length>2 && (x.split(":")).length> 1 ) 
-                                                { x.split(":")(1).toString }}.mkString
-                                            else if (x.length>1) 
-                                                {x} }.mkString
-                         template.map{x=> x}
+Note: Kafka , mysql, spark is configured locally on mac
 
-
-Created Following two table in MySQL DB
+# Created Following two table in MySQL DB
 
 1) create table product_master(product_id STRING, category STRING, subcategory STRING)
 2) create table customer_master(cust_id varchar(100), custname varchar(100), city varchar(100) , state varchar(100), state_code Integer,
 city_code integer, zipcode Integer) ;
 
-Load test data
+# Load test data
 3)
 insert into customer_master values('CUST-10378903','Sabby','KARNATAKA','Banglore',56,5,565018);
 insert into customer_master values('CUST-7846392','John','DELHI','New Delhi',11,0,110018);
@@ -46,12 +41,13 @@ insert into product_master values('1219','cat4','subcat27');
 insert into product_master values('1220','cat4','subcat28');
 
 
-5) To load data in kafka topic
-Producer utility created
+# 5) To load data in kafka topic
+Producer utility created to produce Json files to kafka topic
 
 sbt "runMain product_via_kafka.KafkaProducerApp"
 
-6) submit the spark job
+# 6) submit the spark job
+Spark Structured streamer will consumer json from the kafka topic
 
 spark-submit --class sparkConsumerForKafka --master local[*] --driver-class-path /Users/keeratjohar2305/.ivy2/cache/org.apache.kafka/kafka-clients/jars/kafka-clients-2.1.1.jar:/Users/keeratjohar2305/.ivy2/cache/org.apache.spark/spark-sql-kafka-0-10_2.11/jars/spark-sql-kafka-0-10_2.11-2.4.0.jar /Users/keeratjohar2305/Downloads/eclipseSbtSpark/SPARK_KAFKA/target/scala-2.11/spark_poc_2.11-0.1.jar
 
